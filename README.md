@@ -1,6 +1,6 @@
 # Web Application Development and Security (COMP6703001) Final Project
-
-<ul>Tech Stack:
+<b>Tech Stack:</b>
+<ul>
 <li>Frontend: Next.js</li>
 <li>Backend: Node.js</li>
 <li>API: some sort of restful api</li>

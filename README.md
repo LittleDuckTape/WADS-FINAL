@@ -3,7 +3,7 @@
 <ul>
 <li>Frontend: Next.js</li>
 <li>Backend: Node.js</li>
-<li>API: some sort of restful api</li>
+<li>API: Express Rest API</li>
 <li>Database: PostgreSQL</li>
 <li>Deployment: Docker</li>
 </ul>

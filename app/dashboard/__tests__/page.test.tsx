@@ -57,7 +57,7 @@ describe('DashboardPage', () => {
     render(<DashboardPage />)
 
     await waitFor(() => {
-      expect(screen.getByText('Loading...')).toBeInTheDocument()
+      expect(screen.getByText('🚧 WIP 🚧')).toBeInTheDocument()
     })
   })
 

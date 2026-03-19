@@ -7,6 +7,17 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./login.module.css";
 
+
+async function syncUser() {
+    const token = await auth.currentUser?.getIdToken();
+    if (!token) return;
+    await fetch("/api/auth/sync", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+}
+
+
 export default function LoginPage() {
 
   const router = useRouter();
@@ -20,7 +31,7 @@ export default function LoginPage() {
     try{
 
       await signInWithEmailAndPassword(auth,email,password);
-
+      await syncUser()
       router.push("/dashboard");
 
     }catch(error){
@@ -43,6 +54,8 @@ export default function LoginPage() {
     }
 
   };
+
+
 
   return (
     <div className={styles.container}>

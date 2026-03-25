@@ -45,7 +45,7 @@ export default function LoginPage() {
     try{
 
       await signInWithPopup(auth,googleProvider);
-
+      await syncUser()
       router.push("/dashboard");
 
     }catch(error){

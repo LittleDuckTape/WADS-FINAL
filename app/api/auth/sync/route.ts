@@ -26,7 +26,16 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    return NextResponse.json({ user });
+    // Set session cookie with the ID token
+    const response = NextResponse.json({ user });
+    response.cookies.set("session", idToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 60 * 60 * 24, // 1 day, but token expires in 1 hour
+    });
+
+    return response;
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });

@@ -22,8 +22,16 @@ export default function DashboardPage() {
   }, [router]);
 
   const handleLogout = async () => {
-    await signOut(auth);
-    router.push("/login");
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+      await signOut(auth);
+      router.push("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+      // Still sign out even if API fails
+      await signOut(auth);
+      router.push("/login");
+    }
   };
 
   if (loading) {
